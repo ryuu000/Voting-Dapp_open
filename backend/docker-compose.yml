@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app:
+    image: node:14
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    command: sh -c "yarn install && yarn start"
+    ports:
+      - "3000:3000"
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
