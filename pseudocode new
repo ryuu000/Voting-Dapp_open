@@ -1,0 +1,63 @@
+// Pseudocode for the voting app architecture
+
+// Step 1: User Authentication (manual process)
+Function authenticateUser(userCredentials):
+    If userCredentials are valid:
+        Approve user manually
+        Grant access to app features
+    Else:
+        Deny access
+        Notify user of failed authentication
+
+// Step 2: Fetch Wellness Professionals from SQL Database
+Function getWellnessProfessionals():
+    Query SQL database for professional profiles
+    Return list of professionals and their details
+
+// Step 3: Voting Process
+Function castVote(voter, professionalID, voteType):  // voteType is 'upvote' or 'downvote'
+    If voter is authenticated:
+        Trigger Hivesigner to record vote on Hive blockchain
+        Log transaction details (voteType, professionalID, etc.)
+        Return success or error based on blockchain response
+    Else:
+        Notify user to authenticate first
+
+// Step 4: Fetch Voting Data from Hive
+Function fetchVotingData(professionalID):
+    Query Hive blockchain for upvotes and downvotes for the given professionalID
+    Return upvotes and downvotes count
+
+// Step 5: Manual Rewards Distribution
+Function distributeRewards():
+    Admin reviews Hive voting data periodically
+    Fetch professionals with high net votes (upvotes - downvotes)
+    Manually allocate rewards based on criteria
+    Record rewards distribution in SQL database
+
+// Step 6: Display Voting Results
+Function displayProfessionalData():
+    professionals = getWellnessProfessionals()
+    For each professional in professionals:
+        votes = fetchVotingData(professional.id)
+        Display professional details along with voting data
+
+// Step 7: User Interaction Flow
+Function appFlow():
+    User logs in or registers
+    AuthenticateUser(userCredentials)
+    If authentication is successful:
+        Display list of wellness professionals
+        Allow user to castVote (upvote or downvote)
+        Update and display live voting results
+    Else:
+        End session or prompt re-authentication
+
+// Additional Features (Optional)
+Function verifyVoteIntegrity():
+    Periodically check Hive blockchain transactions to prevent vote manipulation
+    Flag suspicious activity for manual review
+
+Function generateReports():
+    Generate periodic reports combining SQL database and Hive voting data
+    Help admins track trends and app performance
