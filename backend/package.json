@@ -1,0 +1,16 @@
+{
+  "name": "backend-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "hivesigner": "^2.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
