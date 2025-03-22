@@ -1,0 +1,16 @@
+{
+    "opts": {
+        "template": "./node_modules/tsd-jsdoc/dist"
+      },
+      "tags": {
+        "allowUnknownTags": ["optional"] 
+    },
+    "plugins": [
+        "node_modules/better-docs/typescript"
+    ],
+    "source": {
+        "includePattern": "\\.(jsx|js|ts|tsx)$",
+        "include": ["./assembly"],
+        "excludePattern": "(node_modules|docs)"
+    }
+}
