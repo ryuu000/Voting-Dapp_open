@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@vsc.eco/sdk": "^0.1.4"
+  }
+}
